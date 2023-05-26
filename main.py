@@ -1,18 +1,18 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 
 app = FastAPI()
 
 
-@app.get("/rate")
-async def btc_rate():
-    return {"message": "Under development..."}
+@app.get("/rate", tags=["rate"])
+async def btc_rate() -> float:
+    return 3.1415926
 
 
-@app.post("/subscribe")
-async def subscribe_email(email: str):
-    return {"message": "Under development..."}
+@app.post("/subscribe", tags=["subscription"])
+async def subscribe_email(email: str) -> Response:
+    return Response(None, 200)
 
 
-@app.post("/sendEmail")
-async def mailing():
-    return {"message": "Under development..."}
+@app.post("/sendEmail", tags=["subscription"])
+async def mailing() -> Response:
+    return Response(None, 200)
