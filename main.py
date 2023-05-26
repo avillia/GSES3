@@ -1,12 +1,15 @@
 from fastapi import FastAPI, Response
 from pydantic import EmailStr
 
+from btc_rate import fetch_btc_rate
+
+
 app = FastAPI()
 
 
 @app.get("/rate", tags=["rate"])
 async def btc_rate() -> float:
-    return 3.1415926
+    return fetch_btc_rate()
 
 
 @app.post("/subscribe", tags=["subscription"])
