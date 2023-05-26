@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Response
+from pydantic import EmailStr
 
 app = FastAPI()
 
@@ -9,7 +10,7 @@ async def btc_rate() -> float:
 
 
 @app.post("/subscribe", tags=["subscription"])
-async def subscribe_email(email: str) -> Response:
+async def subscribe_email(email: EmailStr) -> Response:
     return Response(None, 200)
 
 
