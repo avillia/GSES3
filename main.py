@@ -26,9 +26,22 @@ async def btc_rate() -> float:
     return fetch_btc_rate()
 
 
-@app.post("/subscribe", tags=["subscription"])
+@app.post(
+    "/subscribe",
+    tags=["subscription"],
+    responses={
+        200: {"description": "E-mail successfully added to db"},
+        409: {"description": "E-mail is already in db"},
+        422: {"description": "E-mail is invalid"},
+
+    }
+)
 async def subscribe_email(email: EmailStr) -> Response:
-    return Response(None, 200)
+    try:
+        subscribe(email)
+        return Response(None, 200)
+    except ValueError as exception:
+        raise HTTPException(409, str(exception)) from exception
 
 
 @app.post("/sendEmail", tags=["subscription"])
