@@ -24,7 +24,7 @@ def _append_db_with(email: str) -> bool:
 
 
 def _retrieve_all_email_records() -> list[str]:
-    with open("db.csv", "r") as file:
+    with open("../db.csv", "r") as file:
         raw_data = read_as_csv(file)
         lines = list(raw_data)
         return _flatten(lines)
@@ -35,5 +35,5 @@ def _flatten(lines: list[list[str]]) -> list[str]:
 
 
 def _write_to_db(email: str):
-    with open("db.csv", "a", newline="") as file:
+    with open("../db.csv", "a", newline="") as file:
         writer(file).writerow([email])

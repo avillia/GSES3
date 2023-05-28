@@ -3,7 +3,7 @@ import string
 
 from assertpy import assert_that
 
-from subscribe import subscribe, _retrieve_all_email_records
+from core.subscribe import subscribe, _retrieve_all_email_records
 
 
 def generate_sample_string(length: int = 8):

@@ -2,8 +2,9 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import Response
 from pydantic import EmailStr
 
-from btc_rate import fetch_btc_rate
-from subscribe import subscribe
+from core.btc_rate import fetch_btc_rate
+from core.subscribe import subscribe
+
 from utils import setup_db
 
 app = FastAPI()
