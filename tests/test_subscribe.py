@@ -10,7 +10,7 @@ def generate_sample_string(length: int = 8):
     return "".join(random.choices(string.ascii_letters + string.digits, k=length))
 
 
-def test_writing_100_values(sample_db):
+def test_writing_values(sample_db):
     emails = [generate_sample_string() for _ in range(100)]
 
     for email in emails:
@@ -19,7 +19,7 @@ def test_writing_100_values(sample_db):
     retrieved = _retrieve_all_email_records()
 
     assert_that(retrieved).is_type_of(list)
-    assert_that(retrieved).is_length(100)
+    assert_that(retrieved).is_equal_to(emails)
 
 
 def test_writing_already_existing_value_raises_error(sample_db):
