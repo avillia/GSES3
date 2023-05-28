@@ -14,10 +14,18 @@ def sample_db():
 
 
 def create_test_db_instance():
-    with open("db.csv", "w"):
+    create_csv_file("test_db.csv")
+
+
+def create_csv_file(filename: str):
+    with open(filename, "w"):
         ...
 
 
 def teardown_test_db_instance():
-    if path.exists("db.csv"):
-        remove_file("db.csv")
+    remove_csv_file("test_db.csv")
+
+
+def remove_csv_file(filename: str):
+    if path.exists(filename):
+        remove_file(filename)
