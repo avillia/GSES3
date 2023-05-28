@@ -1,6 +1,10 @@
+from csv import reader as read_as_csv
+from csv import writer
+
+
 def subscribe(email: str) -> bool:
     if _check_if_db_already_contains(email):
-        raise ValueError
+        raise ValueError("Email is already in a db!")
     return _append_db_with(email)
 
 
@@ -18,9 +22,16 @@ def _append_db_with(email: str) -> bool:
 
 
 def _retrieve_all_email_records() -> list[str]:
-    ...
+    with open("db.csv", "r") as file:
+        raw_data = read_as_csv(file)
+        lines = list(raw_data)
+        return _flatten(lines)
+
+
+def _flatten(lines: list[list[str]]) -> list[str]:
+    return list(*zip(*lines))
 
 
 def _write_to_db(email: str):
-    ...
-
+    with open("db.csv", "a", newline="") as file:
+        writer(file).writerow([email])
