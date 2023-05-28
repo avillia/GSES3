@@ -1,7 +1,7 @@
 from _csv import reader as read_as_csv, writer
 
 
-def append_db_with(email: str, db="../db.csv") -> bool:
+def append_db_with(email: str, db="db.csv") -> bool:
     try:
         _write_to_db(email, db)
         return True
@@ -11,7 +11,7 @@ def append_db_with(email: str, db="../db.csv") -> bool:
         return False
 
 
-def retrieve_all_emails(db="../db.csv") -> list[str]:
+def retrieve_all_emails(db="db.csv") -> list[str]:
     return _retrieve_all_records_from_csv(db)
 
 

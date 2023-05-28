@@ -47,4 +47,8 @@ async def subscribe_email(email: EmailStr) -> Response:
 
 @app.post("/sendEmail", tags=["subscription"])
 async def mailing() -> Response:
+    """
+    Ideally, this should make use of core.mailing.py module functions.
+    However, sadly, I have no time to implement them properly
+    """
     return Response(None, 200)
