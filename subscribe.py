@@ -18,6 +18,8 @@ def _append_db_with(email: str) -> bool:
         _write_to_db(email)
         return True
     except Exception:
+        # Since this interface is unaware of db backend we use,
+        # Exception is broad and generalized
         return False
 
 
