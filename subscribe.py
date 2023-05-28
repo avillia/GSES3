@@ -4,7 +4,7 @@ from csv import writer
 
 def subscribe(email: str) -> bool:
     if _check_if_db_already_contains(email):
-        raise ValueError("Email is already in a db!")
+        raise ValueError(f"{email} e-mail is already in a db!")
     return _append_db_with(email)
 
 
